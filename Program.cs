@@ -44,10 +44,15 @@ namespace Parser_xml
                             if (ind <= 0)
                             {
                                 /*Console.WriteLine(o);*/
-                                var okpd2code = o.SelectToken("ns2:classification.ns2:activities.ns2:okved");
+                                var okpd2code = o.SelectTokens("ns2:classification.ns2:activities.ns2:okved");
                                 foreach (var e in okpd2code)
                                 {
-                                    Console.WriteLine(e.SelectToken("ns2:code"));
+                                    foreach (var s in e)
+                                    {
+                                        Console.WriteLine(s.SelectToken("ns2:code"));
+                                    }
+                                    {
+                                    }
                                 }
                             }
                             ind++;
@@ -65,6 +70,8 @@ namespace Parser_xml
                     }
                 }
             }
+            DirectoryInfo dirInfo = new DirectoryInfo(extractPath);
+            dirInfo.Delete(true);
         }
     }
 }
