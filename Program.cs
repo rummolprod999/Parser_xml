@@ -51,8 +51,6 @@ namespace Parser_xml
                                     {
                                         Console.WriteLine(s.SelectToken("ns2:code"));
                                     }
-                                    {
-                                    }
                                 }
                             }
                             ind++;
