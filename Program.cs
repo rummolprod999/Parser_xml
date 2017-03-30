@@ -16,7 +16,7 @@ namespace Parser_xml
             string NameAr = "/out/nsi/nsiOrganization/nsiOrganization_all_20160911_010000_001.xml.zip";
             string DestAr = "./nsiOrganization_all_20160911_010000_001.xml.zip";
             string extractPath = "./nsiOrganization_all_20160911_010000_001";
-            string NameF = "./nsiOrganization_all_20160911_010000_001/nsiOrganization_all_20160911_010000_001.xml";
+            string NameF = "./nsiOrganization_all_20160911_010000_001/nsiOrganization_all_20160911_010000_028.xml";
             Client ftpCl = new Client("ftp://ftp.zakupki.gov.ru", "fz223free", "fz223free");
             ftpCl.DownloadFile(NameAr, DestAr);
             FileInfo fileInf = new FileInfo(DestAr);
@@ -35,7 +35,8 @@ namespace Parser_xml
                         doc.LoadXml(text);
                         string jsons = JsonConvert.SerializeXmlNode(doc);
                         JObject json = JObject.Parse(jsons);
-                        /*Console.WriteLine(json);*/
+                        /*File.WriteAllText("json.txt", json.ToString());
+                        Console.WriteLine(json);*/
                         var org = from p in json["ns2:nsiOrganization"]["ns2:body"]["ns2:item"]
                             select p["ns2:nsiOrganizationData"];
                         int ind = 0;
